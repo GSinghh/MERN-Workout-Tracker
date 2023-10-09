@@ -23,7 +23,7 @@ router.delete('/:id', (req, res) =>{
 
 //Update a workout
 router.put('/:id', (req, res) => {
-    res.json({mssg: 'Updating a workout'});
+    res.json({mssg: 'UPDATE a workout'});
 });
 
 module.exports = router;
