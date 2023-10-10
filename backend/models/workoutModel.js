@@ -13,7 +13,7 @@ const workoutSchema = new Schema({
         type: Number,
         required: true
     },
-    weight: {
+    load: {
         type: Number,
         required: true
     }
