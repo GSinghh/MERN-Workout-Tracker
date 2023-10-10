@@ -57,6 +57,7 @@ const deleteWorkout = async (req, res) => {
 
 }
 
+
 const updateWorkout = async (req, res) => {
 
     //Destructing to grab ID from request parameters
