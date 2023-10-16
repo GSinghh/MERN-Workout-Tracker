@@ -16,7 +16,7 @@ export const WorkoutForm = () => {
 
 
         //POST Request 
-        const response = fetch('/api/workouts', {
+        const response = await fetch('http://localhost:4000/api/workouts/', {
             method: 'POST', 
             body: JSON.stringify(workout),
             headers: { 
@@ -36,30 +36,35 @@ export const WorkoutForm = () => {
             setLoad('');
             setReps('');
             setError(null);
-            console.log("New Workout Added");
+            console.log("New Workout Added", json);
         }
     }
     
     return (
         <form className = "create" onSubmit={handleSubmit}>
-            <h3>Add a New Workotu</h3>
+            <h3>Add a New Workout</h3>
             <label>Exercise Title:</label>
-            <input type= "text">
+            <input 
+                type= "text"
                 onChange = {(e) => setTitle(e.target.value)}
-                value = {title};
-            </input>
+                value = {title}
+            />
 
             <label>Load (KG):</label>
-            <input type= "text">
+            <input 
+                type= "number"
                 onChange = {(e) => setLoad(e.target.value)}
-                value = {load};
-            </input>
+                value = {load}
+            />
 
             <label>Total Reps:</label>
-            <input type= "text">
+            <input 
+                type= "number"
                 onChange = {(e) => setReps(e.target.value)}
-                value = {reps};
-            </input>
+                value = {reps}
+            />
+            <button>Add Workout</button>
+            {error && <div className = "error">{error}</div>}
         </form>
     );
 }
