@@ -8,6 +8,7 @@ export const WorkoutForm = () => {
     const [load, setLoad] = useState('');
     const [reps, setReps] = useState('');
     const [error, setError] = useState(null);
+    const [errorMessage, setErrorMessage] = useState([])
 
     const handleSubmit = async (e) => {
         //Since we dont want the page to refresh after the form is submitted
@@ -31,6 +32,7 @@ export const WorkoutForm = () => {
         
         if(!response.ok) {
             setError(json.error);
+            setErrorMessage(json.errorMessage)
         }
         if(response.ok)
         {
@@ -38,6 +40,7 @@ export const WorkoutForm = () => {
             setLoad('');
             setReps('');
             setError(null);
+            setErrorMessage([]);
             console.log("New Workout Added", json);
             dispatch({type: 'CREATE_WORKOUT', payload: json});
         }
