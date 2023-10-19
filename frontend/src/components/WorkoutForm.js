@@ -8,7 +8,7 @@ export const WorkoutForm = () => {
     const [load, setLoad] = useState('');
     const [reps, setReps] = useState('');
     const [error, setError] = useState(null);
-    const [errorMessage, setErrorMessage] = useState([])
+    const [emptyFields, setEmptyFields] = useState([]);
 
     const handleSubmit = async (e) => {
         //Since we dont want the page to refresh after the form is submitted
@@ -27,12 +27,11 @@ export const WorkoutForm = () => {
             }
         })
 
-        //
         const json = await response.json()
         
         if(!response.ok) {
             setError(json.error);
-            setErrorMessage(json.errorMessage)
+            setEmptyFields(json.emptyFields);
         }
         if(response.ok)
         {
@@ -40,7 +39,7 @@ export const WorkoutForm = () => {
             setLoad('');
             setReps('');
             setError(null);
-            setErrorMessage([]);
+            setEmptyFields([]);
             console.log("New Workout Added", json);
             dispatch({type: 'CREATE_WORKOUT', payload: json});
         }
@@ -54,6 +53,7 @@ export const WorkoutForm = () => {
                 type= "text"
                 onChange = {(e) => setTitle(e.target.value)}
                 value = {title}
+                className = {emptyFields.includes('title') ? 'error' : ''}
             />
 
             <label>Load (KG):</label>
@@ -61,6 +61,7 @@ export const WorkoutForm = () => {
                 type= "number"
                 onChange = {(e) => setLoad(e.target.value)}
                 value = {load}
+                className = {emptyFields.includes('load') ? 'error' : ''}
             />
 
             <label>Total Reps:</label>
@@ -68,6 +69,7 @@ export const WorkoutForm = () => {
                 type= "number"
                 onChange = {(e) => setReps(e.target.value)}
                 value = {reps}
+                className = {emptyFields.includes('reps') ? 'error' : ''}
             />
             <button>Add Workout</button>
             {error && <div className = "error">{error}</div>}

@@ -5,20 +5,20 @@ const mongoose = require('mongoose');
 const createWorkout = async (req, res) => {
     const {title, load, reps} = req.body;
 
-    const errorMessages = []
+    let emptyFields = []
 
     if(!title)
-        errorMessages.push('title')
+        emptyFields.push('title')
     
     if(!load)
-        errorMessages.push('load')
+        emptyFields.push('load')
     
     if(!reps)
-        errorMessages.push('reps')
+        emptyFields.push('reps')
     
-    if(errorMessages.length > 0)
+    if(emptyFields.length > 0)
     {
-        return res.status(400).json({error : 'Please fill in all fields'}, errorMessages)
+        return res.status(400).json({error : 'Please fill in all fields', emptyFields})
     }
     
 
