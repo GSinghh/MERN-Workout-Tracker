@@ -5,6 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const workoutRoutes = require('./routes/workout')
+const userRoutes = require('./routes/user')
 //Express App
 const app = express();
 
@@ -20,6 +21,7 @@ app.use('/', (req, res, next) => {
 
 //Routes
 app.use('/api/workouts/', workoutRoutes);
+app.use('/login', userRoutes);
 
 //Database Connection
 //Only start the server once the database connection is established
