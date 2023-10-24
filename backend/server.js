@@ -21,7 +21,7 @@ app.use('/', (req, res, next) => {
 
 //Routes
 app.use('/api/workouts/', workoutRoutes);
-app.use('/login', userRoutes);
+app.use('/api/user', userRoutes);
 
 //Database Connection
 //Only start the server once the database connection is established
