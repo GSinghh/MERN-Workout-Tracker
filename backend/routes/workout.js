@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const requireAuth = require('../middleware/requireAuth');
 
 //Used to reference functions that are in the workout controller
 const {
@@ -10,6 +11,8 @@ const {
     updateWorkout
 } = require('../controller/workoutController');
 
+//require authorization for all workout routes
+router.use(requireAuth);
 
 //Getting all workouts
 router.get('/', getWorkouts);
