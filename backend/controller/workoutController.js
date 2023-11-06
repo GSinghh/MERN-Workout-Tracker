@@ -23,7 +23,8 @@ const createWorkout = async (req, res) => {
     
 
     try {
-        const workout = await Workout.create({title, load, reps});
+        const user_id = req.user._id;
+        const workout = await Workout.create({title, load, reps, user_id});
         res.status(200).json(workout);
     } catch (error) {
         res.status(400).json({error: error.message});
@@ -33,8 +34,10 @@ const createWorkout = async (req, res) => {
 //GET -> Getting all workouts
 const getWorkouts = async (req, res) => {
 
+    const user_id = req.user._id;
+
     //Grabbing all workouts from DB and sorting them in reverse order
-    const workout = await Workout.find({}).sort({createdAt : -1});
+    const workout = await Workout.find({ user_id }).sort({createdAt : -1});
     res.status(200).json(workout);
 }
 
