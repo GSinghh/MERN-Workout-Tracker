@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export const WorkoutForm = () => {
 
     const { dispatch } = useWorkoutsContext();
+    const { user } = useAuthContext();
+    
     const [title, setTitle] = useState('');
     const [load, setLoad] = useState('');
     const [reps, setReps] = useState('');
@@ -14,6 +17,11 @@ export const WorkoutForm = () => {
         //Since we dont want the page to refresh after the form is submitted
         e.preventDefault();
 
+        if (!user) {
+            setError('You must be logged in');
+            return
+        }
+
         //JSON object to store all values
         const workout = {title, load, reps};
 
@@ -23,7 +31,8 @@ export const WorkoutForm = () => {
             method: 'POST', 
             body: JSON.stringify(workout),
             headers: { 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
 
