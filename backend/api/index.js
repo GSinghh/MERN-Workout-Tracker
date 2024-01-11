@@ -14,8 +14,12 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/", (req, res, next) => {
-  console.log(req.path, req.method);
-  next();
+    console.log(req.path, req.method);
+    next();
+});
+
+app.get("/", (req, res) => {
+    res.status(200).json({ message: "Backend is on" });
 });
 
 //Routes
@@ -25,14 +29,17 @@ app.use("/api/user", userRoutes);
 //Database Connection
 //Only start the server once the database connection is established
 mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => {
-    app.listen(process.env.PORT, () => {
-      console.log("Connected to DB & Listening on Port", process.env.PORT);
+    .connect(process.env.MONGO_URI)
+    .then(() => {
+        app.listen(process.env.PORT, () => {
+            console.log(
+                "Connected to DB & Listening on Port",
+                process.env.PORT
+            );
+        });
+    })
+    .catch((error) => {
+        console.log(error);
     });
-  })
-  .catch((error) => {
-    console.log(error);
-  });
 
 module.exports = app;
