@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useAuthContext } from './useAuthContext'
+import { useState } from "react";
+import { useAuthContext } from "./useAuthContext";
 
 export const useSignup = () => {
     const [error, setError] = useState(null);
@@ -10,11 +10,14 @@ export const useSignup = () => {
         setIsLoading(true);
         setError(null);
 
-        const response = await fetch('http://localhost:4000/api/user/signup', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'}, 
-            body: JSON.stringify({email,password})
-        })
+        const response = await fetch(
+            "https://workout-tracker-backend-gsinghh.onrender.com/api/user/signup",
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+            }
+        );
 
         const json = await response.json();
 
@@ -23,17 +26,13 @@ export const useSignup = () => {
             setError(json.error);
         }
 
-        if (response.ok)
-        {
+        if (response.ok) {
             //Storing the token locally
-            localStorage.setItem('user', JSON.stringify(json));
+            localStorage.setItem("user", JSON.stringify(json));
             //Updating the auth context
-            dispatch({type: 'LOGIN', payload: json});
-            setIsLoading(false)
-
+            dispatch({ type: "LOGIN", payload: json });
+            setIsLoading(false);
         }
-        
-
-    }
-    return { signup, isLoading, error }
-}
+    };
+    return { signup, isLoading, error };
+};

@@ -11,7 +11,7 @@ export const useLogin = () => {
         setError(null);
 
         const response = await fetch(
-            "https://workout-tracker-backend-seven.vercel.app/api/user/login",
+            "https://workout-tracker-backend-gsinghh.onrender.com/api/user/login",
             {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
