@@ -65,7 +65,7 @@ export const WorkoutForm = () => {
                 className={emptyFields.includes("title") ? "error" : ""}
             />
 
-            <label>Load (Lbs):</label>
+            <label>Load (lbs):</label>
             <input
                 type="number"
                 onChange={(e) => setLoad(e.target.value)}
