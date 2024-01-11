@@ -33,7 +33,7 @@ export const WorkoutDetails = ({ workout }) => {
         <div className="workout-details">
             <h4>{workout.title}</h4>
             <p>
-                <strong>Load (Kg): </strong>
+                <strong>Load (lbs): </strong>
                 {workout.load}
             </p>
             <p>
