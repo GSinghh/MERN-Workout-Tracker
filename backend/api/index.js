@@ -3,8 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const workoutRoutes = require("./routes/workout");
-const userRoutes = require("./routes/user");
+const workoutRoutes = require("../routes/workout.js");
+const userRoutes = require("../routes/user.js");
 //Express App
 const app = express();
 
@@ -12,11 +12,6 @@ const app = express();
 app.use(express.json());
 
 app.use(cors());
-
-app.use("/", (req, res, next) => {
-    console.log(req.path, req.method);
-    next();
-});
 
 app.get("/", (req, res) => {
     res.status(200).json({ message: "Backend is on" });
