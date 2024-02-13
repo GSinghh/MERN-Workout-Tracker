@@ -5,7 +5,7 @@
 This workout tracker is perfect for the avid gym goer who wants to keep track of their workouts and observe their progression day by day.
 
 # Preview
-![view 1]()
+![view 1](frontend/public/Workout-Tracker-Preview.png)
 
 # Features
 1. User-friendly interface that allows easy navigation 
