@@ -30,7 +30,7 @@ These are some features that I would like to implement in the future:
 Assuming you have npm installed, you will need to:
 
 1. Clone this project:  
-   `git clone https://https://github.com/GSinghh/MERN-Workout-Tracker.git`
+   `git clone https://github.com/GSinghh/MERN-Workout-Tracker.git`
 
 2. Change into repository directory:<br>
    `cd MERN-Workout-Tracker` 
