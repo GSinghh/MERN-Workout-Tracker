@@ -42,7 +42,12 @@ Assuming you have npm installed, you will need to:
    `MONGO_URI`:  MongoDB Database URL <br>
    `PORT`:  Port number to start the server on <br>
    `SECRET`: Used to sign JSON Web Token
-   
+6. Once all the enviroment variables are set, you can start up the backend with: <br>
+   `npm run start`
+7. There are multiple files in the frontend folder (Home.js, useSignup.js, useLogin.js), each of these files makes a fetch request. Within this request, the url will need to be changed to either localhost, if you plan on hosting on your computer,  or the url for where your backend is hosted.
+8. The frontend should then be ready, you can start it up with: <br>
+`npm run start`
+9. Enjoy! 
 
 
 
