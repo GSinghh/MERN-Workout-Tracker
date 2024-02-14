@@ -40,7 +40,8 @@ Assuming you have npm installed, you will need to:
 
 4. Create a .env file and give each of these variables below a value:<br>
    `MONGO_URI`:  MongoDB Database URL <br>
-   `PORT`:  Port number to start the server on
+   `PORT`:  Port number to start the server on <br>
+   `SECRET`: Used to sign JSON Web Token
    
 
 
